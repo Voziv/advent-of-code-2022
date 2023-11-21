@@ -1,17 +1,17 @@
 package calories
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
+	"github.com/voziv/aoc-2022/internal/util"
 	"sort"
 	"strconv"
 )
 
-func Count(inputFile string) {
+func Count(inputFileName string) {
 
-	elfCalorieCounts := ParseInput(inputFile)
+	lines := util.GetFileContents(inputFileName)
+
+	elfCalorieCounts := CountCalories(lines)
 
 	// Sort
 	sort.Slice(elfCalorieCounts, func(i, j int) bool {
@@ -30,20 +30,7 @@ func Count(inputFile string) {
 	fmt.Printf("\nThe top three elves had a total of %d calories.\n", totalCalories)
 }
 
-func ParseInput(inputFile string) []int {
-	file, err := os.Open(inputFile)
-	if err != nil {
-		panic(err)
-	}
-
-	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
-			log.Fatal(err)
-		}
-	}(file)
-
-	scanner := bufio.NewScanner(file)
+func CountCalories(lines []string) []int {
 
 	// All the problem wants is the highest total amount, as well as the top three totals summed.
 	// We don't actually need to know which elf has what.
@@ -51,9 +38,7 @@ func ParseInput(inputFile string) []int {
 
 	var currentTotal = 0
 
-	for scanner.Scan() {
-		var line = scanner.Text()
-
+	for _, line := range lines {
 		// If we encounter a blank line it means that we're done with the calorie counts for the current elf.
 		if line == "" {
 			elfCalorieCounts = append(elfCalorieCounts, currentTotal)
@@ -67,10 +52,6 @@ func ParseInput(inputFile string) []int {
 		}
 
 		currentTotal += amount
-	}
-
-	if err := scanner.Err(); err != nil {
-		panic(err)
 	}
 
 	// If the file doesn't have a blank line at the end the final elf won't be accounted for.

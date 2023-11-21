@@ -1,10 +1,8 @@
 package rock_paper_scissors
 
 import (
-	"bufio"
 	"fmt"
-	"log"
-	"os"
+	"github.com/voziv/aoc-2022/internal/util"
 	"strings"
 )
 
@@ -21,7 +19,7 @@ var CHEEKY_PRE_CALC = map[string]int{
 }
 
 func Play(inputFileName string) {
-	moves := ParseInput(inputFileName)
+	moves := util.GetFileContents(inputFileName)
 
 	var rounds []*Round
 
@@ -60,35 +58,4 @@ func Play(inputFileName string) {
 	fmt.Printf("Precalc Total: %d\n", preCalcTotal)
 
 	fmt.Printf("Tournament finished. Our score %d. With secret strategy our score we scored %d\n", ourScore, ourScoreWithStrategy)
-}
-
-func ParseInput(inputFile string) []string {
-	file, err := os.Open(inputFile)
-	if err != nil {
-		panic(err)
-	}
-
-	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
-			log.Fatal(err)
-		}
-	}(file)
-
-	scanner := bufio.NewScanner(file)
-
-	// All the problem wants is the highest total amount, as well as the top three totals summed.
-	// We don't actually need to know which elf has what.
-	var lines []string
-
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-
-	// TODO lrobert: Not really sure what this error is supposed to be catching. Examples have been very unclear.
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-
-	return lines
 }
