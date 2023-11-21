@@ -27,8 +27,6 @@ func RunPartOne(inputFileName string) int {
 		}
 	}
 
-	//fmt.Println(itemMap)
-
 	return prioritySum
 }
 
