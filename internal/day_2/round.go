@@ -1,4 +1,4 @@
-package rock_paper_scissors
+package day_2
 
 // X = Force Loss
 // Y = Force Draw
@@ -19,22 +19,20 @@ const (
 )
 
 type Round struct {
-	line          string
-	expectedScore int
-	roundNumber   int
-	ourMove       Move
-	theirMove     Move
-	forceOutcome  string
+	line         string
+	roundNumber  int
+	ourMove      Move
+	theirMove    Move
+	forceOutcome string
 }
 
-func NewRound(line string, expectedScore int, roundNumber int, theirMove Move, ourMove Move, forceOutcome string) *Round {
+func NewRound(line string, roundNumber int, theirMove Move, ourMove Move, forceOutcome string) *Round {
 	return &Round{
-		line:          line,
-		expectedScore: expectedScore,
-		roundNumber:   roundNumber,
-		ourMove:       ourMove,
-		theirMove:     theirMove,
-		forceOutcome:  forceOutcome,
+		line:         line,
+		roundNumber:  roundNumber,
+		ourMove:      ourMove,
+		theirMove:    theirMove,
+		forceOutcome: forceOutcome,
 	}
 }
 

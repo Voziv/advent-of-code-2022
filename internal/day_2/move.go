@@ -1,4 +1,4 @@
-package rock_paper_scissors
+package day_2
 
 import (
 	"errors"

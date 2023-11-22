@@ -1,4 +1,4 @@
-package camp_cleanup
+package day_4
 
 import (
 	"github.com/voziv/aoc-2022/internal/util"
@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func RunPartOne(inputFileName string) int {
+func runPartOne(inputFileName string) string {
 	result := 0
 
 	lines := util.GetFileContents(inputFileName)
@@ -29,7 +29,7 @@ func RunPartOne(inputFileName string) int {
 		}
 	}
 
-	return result
+	return strconv.Itoa(result)
 }
 
 func castToInt(digits string) int {

@@ -1,11 +1,12 @@
-package rucksack
+package day_3
 
 import (
 	"github.com/voziv/aoc-2022/internal/util"
+	"strconv"
 	"strings"
 )
 
-func RunPartOne(inputFileName string) int {
+func runPartOne(inputFileName string) string {
 	rucksacks := util.GetFileContents(inputFileName)
 
 	var prioritySum = 0
@@ -27,7 +28,7 @@ func RunPartOne(inputFileName string) int {
 		}
 	}
 
-	return prioritySum
+	return strconv.Itoa(prioritySum)
 }
 
 func convertCharacterToPriority(character uint8) int {

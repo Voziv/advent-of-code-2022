@@ -1,14 +1,19 @@
-package calories
+package day_1
 
 import (
-	"fmt"
 	"github.com/voziv/aoc-2022/internal/util"
 	"sort"
 	"strconv"
 )
 
-func Count(inputFileName string) {
+func Run() {
+	util.AssertResult("Part 1 example.txt", runPartOne("./inputs/1/example.txt"), "24000")
+	util.AssertResult("Part 1 intput.txt", runPartOne("./inputs/1/input.txt"), "65912")
+	util.AssertResult("Part 2 example.txt", runPartTwo("./inputs/1/example.txt"), "45000")
+	util.AssertResult("Part 2 input.txt", runPartTwo("./inputs/1/input.txt"), "195625")
+}
 
+func runPartOne(inputFileName string) string {
 	lines := util.GetFileContents(inputFileName)
 
 	elfCalorieCounts := CountCalories(lines)
@@ -19,15 +24,27 @@ func Count(inputFileName string) {
 	})
 
 	// Single highest
-	fmt.Printf("\nTop Calorie Count\n")
-	fmt.Printf("The highest calorie count was %d calories.\n", elfCalorieCounts[0])
+	return strconv.Itoa(elfCalorieCounts[0])
+}
+
+func runPartTwo(inputFileName string) string {
+
+	lines := util.GetFileContents(inputFileName)
+
+	elfCalorieCounts := CountCalories(lines)
+
+	// Sort
+	sort.Slice(elfCalorieCounts, func(i, j int) bool {
+		return elfCalorieCounts[i] > elfCalorieCounts[j]
+	})
 
 	// Top three summed
 	var totalCalories = 0
 	for i := 0; i < 3; i++ {
 		totalCalories += elfCalorieCounts[i]
 	}
-	fmt.Printf("\nThe top three elves had a total of %d calories.\n", totalCalories)
+
+	return strconv.Itoa(totalCalories)
 }
 
 func CountCalories(lines []string) []int {

@@ -1,11 +1,12 @@
-package camp_cleanup
+package day_4
 
 import (
 	"github.com/voziv/aoc-2022/internal/util"
+	"strconv"
 	"strings"
 )
 
-func RunPartTwo(inputFileName string) int {
+func runPartTwo(inputFileName string) string {
 	result := 0
 
 	lines := util.GetFileContents(inputFileName)
@@ -32,5 +33,5 @@ func RunPartTwo(inputFileName string) int {
 		}
 	}
 
-	return result
+	return strconv.Itoa(result)
 }

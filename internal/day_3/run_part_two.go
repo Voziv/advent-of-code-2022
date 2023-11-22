@@ -1,30 +1,12 @@
-package rucksack
+package day_3
 
 import (
 	"github.com/voziv/aoc-2022/internal/util"
+	"strconv"
 	"strings"
 )
 
-func getUniqueItems(rucksack string, items map[string]int) map[string]int {
-	itemMap := map[string]int{}
-
-	for _, item := range strings.Split(rucksack, "") {
-		itemMap[item] = 1
-	}
-
-	for i, _ := range itemMap {
-		_, ok := items[i]
-		if ok {
-			items[i]++
-		} else {
-			items[i] = 1
-		}
-	}
-
-	return items
-}
-
-func RunPartTwo(inputFileName string) int {
+func runPartTwo(inputFileName string) string {
 	rucksacks := util.GetFileContents(inputFileName)
 
 	var prioritySum = 0
@@ -43,5 +25,24 @@ func RunPartTwo(inputFileName string) int {
 		}
 	}
 
-	return prioritySum
+	return strconv.Itoa(prioritySum)
+}
+
+func getUniqueItems(rucksack string, items map[string]int) map[string]int {
+	itemMap := map[string]int{}
+
+	for _, item := range strings.Split(rucksack, "") {
+		itemMap[item] = 1
+	}
+
+	for i, _ := range itemMap {
+		_, ok := items[i]
+		if ok {
+			items[i]++
+		} else {
+			items[i] = 1
+		}
+	}
+
+	return items
 }
