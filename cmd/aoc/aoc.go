@@ -5,6 +5,7 @@ import (
 	"github.com/voziv/aoc-2022/internal/day_2"
 	"github.com/voziv/aoc-2022/internal/day_3"
 	"github.com/voziv/aoc-2022/internal/day_4"
+	"github.com/voziv/aoc-2022/internal/day_5"
 	"os"
 )
 
@@ -13,6 +14,7 @@ var DAYS = map[string]func(){
 	"2": day_2.Run,
 	"3": day_3.Run,
 	"4": day_4.Run,
+	"5": day_5.Run,
 }
 
 func main() {
