@@ -7,10 +7,10 @@ import (
 )
 
 func Run() {
-	util.AssertResult("Part 1 example.txt", runPartOne("./inputs/1/example.txt"), "24000")
-	util.AssertResult("Part 1 intput.txt", runPartOne("./inputs/1/input.txt"), "65912")
-	util.AssertResult("Part 2 example.txt", runPartTwo("./inputs/1/example.txt"), "45000")
-	util.AssertResult("Part 2 input.txt", runPartTwo("./inputs/1/input.txt"), "195625")
+	util.AssertResult("Part 1 example.txt", runPartOne("./internal/day_1/example.txt"), "24000")
+	util.AssertResult("Part 1 input.txt", runPartOne("./internal/day_1/input.txt"), "65912")
+	util.AssertResult("Part 2 example.txt", runPartTwo("./internal/day_1/example.txt"), "45000")
+	util.AssertResult("Part 2 input.txt", runPartTwo("./internal/day_1/input.txt"), "195625")
 }
 
 func runPartOne(inputFileName string) string {
